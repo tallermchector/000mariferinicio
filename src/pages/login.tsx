@@ -25,7 +25,7 @@ const LoginPage = () => {
   };
 
   return (
-    <Layout title="Iniciar sesión — MARIFER">
+    <Layout title="Iniciar sesión">
       <section className="form-page">
         <div className="container">
           <div className="back-button-section">

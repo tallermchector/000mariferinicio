@@ -3,7 +3,7 @@ import Link from "next/link";
 import Layout from "../layouts/Main";
 
 const RegisterPage = () => (
-  <Layout title="Crear cuenta — MARIFER">
+  <Layout title="Crear cuenta">
     <section className="form-page">
       <div className="container">
         <div className="back-button-section">

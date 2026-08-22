@@ -37,7 +37,7 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
           768: { slidesPerView: 3, spaceBetween: 24, centeredSlides: false },
           1024: { slidesPerView: 4, spaceBetween: 24, centeredSlides: false },
         }}
-        className="swiper-wrapper"
+        className="products-carousel__swiper"
       >
         {products.map((item) => (
           <SwiperSlide key={item.id}>

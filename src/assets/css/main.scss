@@ -157,11 +157,75 @@ select {
   }
 }
 
+/* ==========================================================================
+   APP SHELL — Layout (src/layouts/Main.tsx)
+   Header es position: fixed (fuera de flujo); la grilla reparte
+   main (1fr) + footer (auto) y el footer queda al pie aunque haya poco
+   contenido. min-height: 100dvh — nunca h-screen.
+   ========================================================================== */
+.app-main {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100dvh;
+  > main {
+    min-width: 0; // evita overflow horizontal por hijos anchos
+  }
+  > main:focus {
+    outline: none; // foco programático desde el skip link, sin anillo
+  }
+}
+
 /* Main page offset for fixed header */
 .main-page {
   padding-top: var(--header-height);
   @include breakpoint(phone) {
     padding-top: calc(var(--header-height) + 28px); // 100px on tablet+
+  }
+}
+
+/* Skip link — primer tab del documento; visible solo con foco */
+.skip-link {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: var(--z-tooltip); // por encima del header (300)
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  background-color: var(--action-primary);
+  color: var(--text-on-brand);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+  box-shadow: var(--shadow-brand);
+  transform: translateY(calc(-100% - var(--space-5)));
+  transition: transform var(--dur-base) var(--ease-out);
+  &:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--text-on-brand);
+    outline-offset: 2px;
+  }
+}
+
+/* Entrada de página — único gesto de movimiento del shell (DESIGN.md §8):
+   solo transform + opacity; se desactiva con prefers-reduced-motion. */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.page-enter {
+  animation: page-enter var(--dur-slow) var(--ease-out) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 }
 
@@ -591,23 +655,31 @@ select {
   color: var(--text-on-brand);
   transition: all var(--dur-base) var(--ease-standard);
 
-  // Announcement strip
+  // Announcement strip (28px) + 44px bar = 72px
   &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    content: "Envío gratis en compras sobre $3.500 · 6 cuotas sin interés";
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 28px;
+    padding: 0 var(--space-4);
     background-color: var(--gold-100);
-    z-index: -1;
+    color: var(--gold-700);
+    font-family: var(--font-body);
+    font-size: var(--text-tag);
+    font-weight: var(--weight-black);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .container {
     display: flex;
     align-items: center;
-    height: 100%;
-    gap: var(--space-6);
+    height: 44px;
+    gap: var(--space-5);
   }
 
   .site-logo {
@@ -662,27 +734,79 @@ select {
   }
 
   .search-form-wrapper {
-    @include breakpoint(tablet-lg) {
-      display: block;
-    }
-    .search-form {
-      position: relative;
-      .icon-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    // Trigger (lupa): icon button; en desktop queda dentro del input
+    > .icon-search {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-pill);
+      background: transparent;
+      border: 0;
+      color: var(--text-on-brand);
+      font-size: 18px;
+      transition: background-color var(--dur-fast) var(--ease-standard);
+      &:hover {
+        background-color: var(--violet-600);
+      }
+      @include breakpoint(tablet-lg) {
         position: absolute;
-        left: var(--space-4);
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text-muted);
+        left: 0;
+        top: 0;
+        z-index: 1;
+        width: 40px;
+        height: 40px;
+        color: var(--violet-300);
         pointer-events: none;
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+
+    // Mobile: form desplegable bajo el header
+    .search-form {
+      position: absolute;
+      top: calc(100% + var(--space-2));
+      right: 0;
+      display: none;
+      width: min(320px, calc(100vw - var(--space-6)));
+      padding: var(--space-2);
+      background: var(--surface-card);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-lg);
+      @include breakpoint(tablet-lg) {
+        position: relative;
+        top: auto;
+        right: auto;
+        display: block;
+        width: auto;
+        padding: 0;
+        background: transparent;
+        border-radius: 0;
+        box-shadow: none;
       }
       input {
-        width: 240px;
-        height: 44px;
+        width: 100%;
+        height: 40px;
+        @include breakpoint(tablet-lg) {
+          width: 240px;
+        }
         padding: 0 var(--space-4) 0 calc(var(--space-4) + 24px);
-        background-color: rgba(255, 255, 255, 0.12);
-        border: 1px solid transparent;
+        background-color: var(--surface-muted);
+        border: 1px solid var(--border-default);
         border-radius: var(--radius-pill);
-        color: var(--text-on-brand);
+        color: var(--text-strong);
+        @include breakpoint(tablet-lg) {
+          background-color: rgba(255, 255, 255, 0.12);
+          border-color: transparent;
+          color: var(--text-on-brand);
+        }
         font-size: var(--text-body);
         transition: all var(--dur-fast) var(--ease-standard);
         @include inputPlaceholder {
@@ -699,15 +823,29 @@ select {
       }
       .icon-cancel {
         position: absolute;
-        right: var(--space-4);
+        right: var(--space-3);
         top: 50%;
         transform: translateY(-50%);
+        display: none;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: transparent;
+        border: 0;
         color: var(--text-muted);
         cursor: pointer;
-        display: none;
-        @include breakpoint(tablet-lg) {
-          display: block;
-        }
+      }
+    }
+
+    &.search-form--active {
+      .search-form {
+        display: block;
+        animation: fade-up var(--dur-slow) var(--ease-out) both;
+      }
+      .icon-cancel {
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
   }
@@ -843,16 +981,34 @@ select {
 
 .page-intro {
   position: relative;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  padding: var(--space-9) 0;
+  display: block;
+  padding: var(--space-6) 0 0;
   background-color: var(--surface-canvas);
   overflow: hidden;
 
   @include breakpoint(phone) {
-    min-height: 80vh;
-    padding: var(--space-10) 0;
+    padding-top: var(--space-8);
+  }
+
+  .swiper-container {
+    width: 100%;
+  }
+
+  .page-intro__slide {
+    display: flex;
+    align-items: center;
+    min-height: 60vh;
+    padding: var(--space-6) 0 var(--space-9);
+    @include breakpoint(tablet-lg) {
+      min-height: 68vh;
+      padding: var(--space-8) 0 var(--space-10);
+    }
+  }
+
+  .shop-data {
+    padding: var(--space-6) 0 var(--space-8);
+    border-top: 1px solid var(--border-hairline);
+    background: var(--surface-card);
   }
 
   // Asymmetric split: Left content (60%) / Right visual (40%)
@@ -894,12 +1050,12 @@ select {
     border-radius: 8px;
     object-fit: cover;
     margin: 0 2px;
-    @include breakpoint(phone) {
+    @include breakpointMax(phone) {
       display: block;
-      height: auto;
+      height: 120px;
       width: 100%;
-      max-width: 300px;
-      margin: var(--space-4) 0;
+      max-width: 220px;
+      margin: var(--space-3) 0;
     }
   }
 
@@ -956,24 +1112,29 @@ select {
     background: var(--surface-card);
     box-shadow: var(--shadow-md);
   }
-  &:before {
-    font-family: "icons";
-    font-size: 18px;
-    color: currentColor;
+  &:after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+  }
+  &.swiper-button-disabled {
+    opacity: 0.35;
   }
 }
 
 .page-intro .swiper-button-prev {
   left: var(--space-4);
   right: auto;
-  &:before {
-    content: "\e80b";
+  &:after {
+    transform: translateX(2px) rotate(-135deg);
   }
 }
 .page-intro .swiper-button-next {
   right: var(--space-4);
-  &:before {
-    content: "\e811";
+  &:after {
+    transform: translateX(-2px) rotate(45deg);
   }
 }
 

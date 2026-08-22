@@ -1169,3 +1169,16 @@
   margin-bottom: var(--space-2);
   color: var(--gold-300);
 }
+
+/* --------------------------------------------------------------------------
+   HERO VISUAL + SUBSCRIBE BG — ajustes de composición
+   -------------------------------------------------------------------------- */
+.page-intro .page-intro__visual img {
+  aspect-ratio: 4 / 5;
+  max-height: 560px;
+  object-fit: cover;
+}
+
+.subscribe .subscribe__content .subscribe__bg {
+  z-index: 0;
+}

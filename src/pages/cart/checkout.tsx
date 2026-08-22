@@ -79,7 +79,7 @@ const CheckoutPage = () => {
   });
 
   return (
-    <Layout title="Envío y pago — MARIFER">
+    <Layout title="Envío y pago">
       <section className="cart" aria-labelledby="checkout-title">
         <div className="container">
           <div className="cart__intro">

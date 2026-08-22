@@ -22,7 +22,7 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Layout title="Recuperar contraseña — MARIFER">
+    <Layout title="Recuperar contraseña">
       <section className="form-page">
         <div className="container">
           <div className="back-button-section">

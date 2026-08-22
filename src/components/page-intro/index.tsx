@@ -85,7 +85,7 @@ const PageIntro = () => {
       <Swiper
         navigation
         effect="fade"
-        className="swiper-wrapper"
+        className="page-intro__swiper"
         onSlideChange={() => {}}
       >
         {slides.map((slide, index) => (

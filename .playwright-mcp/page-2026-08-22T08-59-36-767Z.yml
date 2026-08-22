@@ -1,0 +1,200 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - link "MARIFER Home" [ref=e6] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e9]: MARIFER
+        - navigation "Main navigation" [ref=e10]:
+          - link "Productos" [ref=e11] [cursor=pointer]:
+            - /url: /products
+          - link "Inspiración" [ref=e12] [cursor=pointer]:
+            - /url: /inspiration
+          - link "Tiendas" [ref=e13] [cursor=pointer]:
+            - /url: /stores
+          - button "Mi Cuenta" [ref=e14] [cursor=pointer]
+        - generic [ref=e15]:
+          - generic [ref=e16]:
+            - search "Buscar productos" [ref=e17]:
+              - button [ref=e18] [cursor=pointer]: 
+              - searchbox "Buscar productos" [ref=e20]
+            - button "Abrir búsqueda" [ref=e21] [cursor=pointer]: 
+          - button "Carrito, 0 productos" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]: 
+          - button "Cuenta de usuario" [ref=e27] [cursor=pointer]:
+            - img [ref=e28]: 
+      - navigation [ref=e31]:
+        - link [ref=e32] [cursor=pointer]:
+          - /url: /products
+          - text: Productos
+        - link [ref=e33] [cursor=pointer]:
+          - /url: /inspiration
+          - text: Inspiración
+        - link [ref=e34] [cursor=pointer]:
+          - /url: /stores
+          - text: Tiendas
+        - button [ref=e35] [cursor=pointer]: Mi Cuenta
+    - main [ref=e36]:
+      - region [ref=e37]:
+        - generic [ref=e38]:
+          - generic [ref=e39]: 
+          - generic [ref=e40]: 
+          - generic [ref=e41]:
+            - generic [ref=e46]:
+              - text: Nueva temporada
+              - heading [level=2] [ref=e47]:
+                - text: Descubrí
+                - img "Manos eligiendo tela" [ref=e48]
+                - text: tu estilo
+                - img "Percha con prenda" [ref=e49]
+                - text: único
+              - paragraph [ref=e50]: Moda uruguaya con alma. Diseños que cuentan historias, confeccionados con materiales nobles y atención al detalle.
+              - link "Ver colección" [ref=e52] [cursor=pointer]:
+                - /url: /products
+            - generic [ref=e59]:
+              - text: Nueva temporada
+              - heading [level=2] [ref=e60]:
+                - text: La
+                - img "Detalle de costura" [ref=e61]
+                - text: calidad
+                - img "Textura de lana" [ref=e62]
+                - text: que merecés
+              - paragraph [ref=e63]: Prendas atemporales que trascienden temporadas. Cada pieza nace de la tradición textil uruguaya y la mirada contemporánea.
+              - link "Explorar novedades" [ref=e65] [cursor=pointer]:
+                - /url: /products?new=true
+        - list "Servicios y garantías" [ref=e68]:
+          - list [ref=e70]:
+            - listitem [ref=e71]:
+              - generic [ref=e75]:
+                - heading "Envío gratis" [level=4] [ref=e76]
+                - paragraph [ref=e77]: En compras sobre $3.500
+            - listitem [ref=e78]:
+              - generic [ref=e82]:
+                - heading "6 cuotas sin interés" [level=4] [ref=e83]
+                - paragraph [ref=e84]: Con tarjetas seleccionadas
+            - listitem [ref=e85]:
+              - generic [ref=e89]:
+                - heading "Cambios fáciles" [level=4] [ref=e90]
+                - paragraph [ref=e91]: 30 días para cambiar tu compra
+            - listitem [ref=e92]:
+              - generic [ref=e96]:
+                - heading "Hecho en Uruguay" [level=4] [ref=e97]
+                - paragraph [ref=e98]: Producción local, calidad real
+      - region "Destacados de temporada" [ref=e99]:
+        - generic [ref=e100]:
+          - article [ref=e101]:
+            - generic [ref=e102]:
+              - generic [ref=e103]: Nueva temporada
+              - heading "Llegaron las novedades de otoño" [level=3] [ref=e104]
+              - link "Ver colección" [ref=e105] [cursor=pointer]:
+                - /url: /products
+          - article [ref=e106]:
+            - generic [ref=e107]:
+              - generic [ref=e108]: Básicos
+              - heading "Remeras de algodón desde $1.290" [level=3] [ref=e109]
+              - link "Ver básicos" [ref=e110] [cursor=pointer]:
+                - /url: /products?categoria=remeras
+          - article [ref=e111]:
+            - generic [ref=e112]:
+              - generic [ref=e113]: Liquidación
+              - heading "Últimas unidades de verano" [level=3] [ref=e114]
+              - link "Ver ofertas" [ref=e115] [cursor=pointer]:
+                - /url: /products?oferta=true
+      - region [ref=e116]:
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - heading "Seleccionados para vos" [level=3] [ref=e119]
+            - link "Ver todo" [ref=e120] [cursor=pointer]:
+              - /url: /products
+          - generic "Cargando productos destacados" [ref=e121]:
+            - article:
+              - generic:
+                - heading [level=3]
+                - generic:
+                  - heading [level=4]
+            - article:
+              - generic:
+                - heading [level=3]
+                - generic:
+                  - heading [level=4]
+            - article:
+              - generic:
+                - heading [level=3]
+                - generic:
+                  - heading [level=4]
+            - article:
+              - generic:
+                - heading [level=3]
+                - generic:
+                  - heading [level=4]
+      - region [ref=e122]:
+        - generic [ref=e124]:
+          - heading "Suscribite y recibí novedades, lanzamientos y beneficios exclusivos" [level=4] [ref=e126]
+          - generic [ref=e127]:
+            - generic [ref=e128]: Tu email
+            - textbox "Tu email" [ref=e129]
+            - button "Suscribirme" [ref=e130] [cursor=pointer]
+      - contentinfo [ref=e131]:
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - heading "MARIFER" [level=6] [ref=e135]
+            - paragraph [ref=e139]: Moda uruguaya con alma. Diseñamos y confeccionamos prendas atemporales con materiales nobles, honrando la tradición textil local.
+            - list "Redes sociales" [ref=e140]:
+              - listitem [ref=e141]:
+                - link "Instagram" [ref=e142] [cursor=pointer]:
+                  - /url: https://instagram.com
+              - listitem [ref=e146]:
+                - link "Facebook" [ref=e147] [cursor=pointer]:
+                  - /url: https://facebook.com
+              - listitem [ref=e150]:
+                - link "Twitter" [ref=e151] [cursor=pointer]:
+                  - /url: https://twitter.com
+              - listitem [ref=e154]:
+                - link "YouTube" [ref=e155] [cursor=pointer]:
+                  - /url: https://youtube.com
+          - generic [ref=e158]:
+            - list [ref=e159]:
+              - listitem [ref=e160]: Comprar online
+              - listitem [ref=e161]:
+                - link "Estado de pedido" [ref=e162] [cursor=pointer]:
+                  - /url: /order-status
+              - listitem [ref=e163]:
+                - link "Envíos y entregas" [ref=e164] [cursor=pointer]:
+                  - /url: /shipping
+              - listitem [ref=e165]:
+                - link "Cambios y devoluciones" [ref=e166] [cursor=pointer]:
+                  - /url: /returns
+              - listitem [ref=e167]:
+                - link "Medios de pago" [ref=e168] [cursor=pointer]:
+                  - /url: /payment
+              - listitem [ref=e169]:
+                - link "Contacto" [ref=e170] [cursor=pointer]:
+                  - /url: /contact
+            - list [ref=e171]:
+              - listitem [ref=e172]: Información
+              - listitem [ref=e173]:
+                - link "Gift Cards" [ref=e174] [cursor=pointer]:
+                  - /url: /gift-cards
+              - listitem [ref=e175]:
+                - link "Encontrar tienda" [ref=e176] [cursor=pointer]:
+                  - /url: /stores
+              - listitem [ref=e177]:
+                - link "Newsletter" [ref=e178] [cursor=pointer]:
+                  - /url: /newsletter
+              - listitem [ref=e179]:
+                - link "Ser miembro" [ref=e180] [cursor=pointer]:
+                  - /url: /membership
+              - listitem [ref=e181]:
+                - link "Opinión del sitio" [ref=e182] [cursor=pointer]:
+                  - /url: /feedback
+            - list [ref=e183]:
+              - listitem [ref=e184]: Contacto
+              - listitem [ref=e185]:
+                - link "hola@marifer.com.uy" [ref=e186] [cursor=pointer]:
+                  - /url: mailto:hola@marifer.com.uy
+              - listitem [ref=e187]:
+                - link "+598 2000 0000" [ref=e188] [cursor=pointer]:
+                  - /url: tel:+59820000000
+        - paragraph [ref=e191]: DISEÑO Y DESARROLLO MARIFER — © 2026. TODOS LOS DERECHOS RESERVADOS.
+  - button "Open Next.js Dev Tools" [ref=e197] [cursor=pointer]
+  - alert [ref=e201]

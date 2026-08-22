@@ -2,7 +2,6 @@ import type { GetServerSideProps } from "next";
 import { useState } from "react";
 
 import Breadcrumb from "@/components/breadcrumb";
-import Footer from "@/components/footer";
 import Content from "@/components/product-single/content";
 import Description from "@/components/product-single/description";
 import Gallery from "@/components/product-single/gallery";
@@ -35,7 +34,7 @@ const Product = ({ product }: ProductPageType) => {
   const reviewsCount = product.reviews?.length ?? 0;
 
   return (
-    <Layout title={`${product.name} — MARIFER`}>
+    <Layout title={product.name}>
       <Breadcrumb
         items={[
           { label: "Productos", href: "/products" },
@@ -85,7 +84,6 @@ const Product = ({ product }: ProductPageType) => {
       <div className="product-single-page">
         <ProductsFeatured />
       </div>
-      <Footer />
     </Layout>
   );
 };
