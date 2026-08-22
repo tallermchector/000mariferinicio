@@ -7,8 +7,10 @@ import { postData } from "../utils/services";
 
 type ForgotMail = {
   email: string;
-  password: string;
 };
+
+const EMAIL_PATTERN =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const ForgotPassword = () => {
   const { register, handleSubmit, errors } = useForm<ForgotMail>();
@@ -20,70 +22,65 @@ const ForgotPassword = () => {
   };
 
   return (
-    <Layout>
+    <Layout title="Recuperar contraseña — MARIFER">
       <section className="form-page">
         <div className="container">
           <div className="back-button-section">
-            <Link href="/products">
-              <i className="icon-left" />
-              Back to shop
+            <Link href="/login">
+              <i className="icon-left" aria-hidden="true" />
+              Volver a iniciar sesión
             </Link>
           </div>
 
           <div className="form-block">
-            <h2 className="form-block__title">Forgot your password?</h2>
+            <h1 className="form-block__title">¿Olvidaste tu contraseña?</h1>
             <p className="form-block__description">
-              Enter your email or phone number and recover your account
+              Ingresá el email de tu cuenta y te enviamos un enlace para crear
+              una contraseña nueva.
             </p>
 
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="form__input-row">
+                <label htmlFor="forgot-email" className="form-label">
+                  Email
+                </label>
                 <input
-                  className="form__input"
-                  placeholder="email"
-                  type="text"
+                  id="forgot-email"
+                  className="form-input"
+                  placeholder="vos@ejemplo.com"
+                  type="email"
                   name="email"
+                  autoComplete="email"
+                  aria-invalid={errors.email ? "true" : "false"}
                   ref={register("email", {
                     required: true,
-                    pattern:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    pattern: EMAIL_PATTERN,
                   })}
                 />
 
                 {errors.email && errors.email.type === "required" && (
-                  <p className="message message--error">
-                    This field is required
+                  <p className="form-error" role="alert">
+                    Ingresá tu email para continuar.
                   </p>
                 )}
 
                 {errors.email && errors.email.type === "pattern" && (
-                  <p className="message message--error">
-                    Please write a valid email
-                  </p>
-                )}
-              </div>
-
-              <div className="form__input-row">
-                <input
-                  className="form__input"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  ref={register("password", { required: true })}
-                />
-                {errors.password && errors.password.type === "required" && (
-                  <p className="message message--error">
-                    This field is required
+                  <p className="form-error" role="alert">
+                    Ese email no parece válido. Revisalo e intentá de nuevo.
                   </p>
                 )}
               </div>
 
               <button
                 type="submit"
-                className="btn btn--rounded btn--yellow btn-submit"
+                className="btn btn--primary btn--lg btn-submit"
               >
-                Reset password
+                Enviar enlace
               </button>
+
+              <p className="form__signup-link">
+                ¿Te acordaste? <Link href="/login">Iniciá sesión</Link>
+              </p>
             </form>
           </div>
         </div>

@@ -6,8 +6,8 @@ import ProductsFilter from "@/components/products-filter";
 import Layout from "../layouts/Main";
 
 const Products = () => (
-  <Layout>
-    <Breadcrumb />
+  <Layout title="Productos — MARIFER">
+    <Breadcrumb items={[{ label: "Productos" }]} />
     <section className="products-page">
       <div className="container">
         <ProductsFilter />

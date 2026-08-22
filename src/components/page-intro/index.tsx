@@ -11,13 +11,13 @@ const PageIntro = () => {
         "Descubrí ",
         {
           type: "image",
-          src: "/images/hero-inline-1.jpg",
+          src: "/images/products/product-2.jpg",
           alt: "Manos eligiendo tela",
         },
         " tu estilo ",
         {
           type: "image",
-          src: "/images/hero-inline-2.jpg",
+          src: "/images/products/product-4.jpg",
           alt: "Percha con prenda",
         },
         " único",
@@ -36,13 +36,13 @@ const PageIntro = () => {
         "La ",
         {
           type: "image",
-          src: "/images/hero-inline-3.jpg",
+          src: "/images/products/product-6.jpg",
           alt: "Detalle de costura",
         },
         " calidad ",
         {
           type: "image",
-          src: "/images/hero-inline-4.jpg",
+          src: "/images/products/product-7.jpg",
           alt: "Textura de lana",
         },
         " que merecés",

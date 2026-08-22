@@ -1,14 +1,17 @@
 const ProductItemLoading = () => (
-  <a href="#" className="product-item product-item--loading">
-    <div className="product__image" />
+  <article
+    className="card card--skeleton product-item product-item--loading"
+    aria-hidden="true"
+  >
+    <div className="card__media product__image" />
 
-    <div className="product__description">
-      <h3 />
+    <div className="card__content product__description">
+      <h3 className="card__title" />
       <div className="product__price">
         <h4 />
       </div>
     </div>
-  </a>
+  </article>
 );
 
 export default ProductItemLoading;

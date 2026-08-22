@@ -8,14 +8,18 @@ type LayoutType = {
   children?: React.ReactNode;
 };
 
-const ErrorPage = ({ children, title = "Next.js Ecommerce" }: LayoutType) => {
+const ErrorPage = ({ children, title = "MARIFER" }: LayoutType) => {
   const router = useRouter();
   const pathname = router.pathname;
 
   return (
     <div className="app-main">
       <Head>
-        <title>Page not found &mdash; {title}</title>
+        <title>Página no encontrada &mdash; {title}</title>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
       </Head>
 
       <Header isErrorPage />

@@ -4,38 +4,39 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { ProductTypeList } from "@/types";
 
 import ProductItem from "../../product-item";
-
-let slidesPerView = 1.3;
-let centeredSlides = true;
-let spaceBetween = 30;
-if (process.browser) {
-  if (window.innerWidth > 768) {
-    slidesPerView = 3;
-    spaceBetween = 35;
-    centeredSlides = false;
-  }
-  if (window.innerWidth > 1024) {
-    slidesPerView = 4;
-    spaceBetween = 65;
-    centeredSlides = false;
-  }
-}
+import ProductItemLoading from "../../product-item/loading";
 
 type ProductsCarouselType = {
   products: ProductTypeList[];
 };
 
 const ProductsCarousel = ({ products }: ProductsCarouselType) => {
-  if (!products) return <div>Loading</div>;
+  if (!products) {
+    return (
+      <div
+        className="products-carousel products-carousel--loading"
+        aria-busy="true"
+        aria-label="Cargando productos destacados"
+      >
+        {Array.from({ length: 4 }).map((_, index) => (
+          <ProductItemLoading key={index} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="products-carousel">
       <Swiper
-        spaceBetween={spaceBetween}
-        loop
-        centeredSlides={centeredSlides}
+        spaceBetween={12}
+        slidesPerView={1.3}
+        centeredSlides
         watchOverflow
-        slidesPerView={slidesPerView}
+        loop
+        breakpoints={{
+          768: { slidesPerView: 3, spaceBetween: 24, centeredSlides: false },
+          1024: { slidesPerView: 4, spaceBetween: 24, centeredSlides: false },
+        }}
         className="swiper-wrapper"
       >
         {products.map((item) => (
@@ -47,7 +48,6 @@ const ProductsCarousel = ({ products }: ProductsCarouselType) => {
               color={item.color}
               discount={item.discount}
               currentPrice={item.currentPrice}
-              key={item.id}
               images={item.images}
             />
           </SwiperSlide>

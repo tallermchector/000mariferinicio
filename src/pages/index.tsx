@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Footer from "@/components/footer";
 import PageIntro from "@/components/page-intro";
 import ProductsFeatured from "@/components/products-featured";
@@ -5,102 +7,60 @@ import Subscribe from "@/components/subscribe";
 
 import Layout from "../layouts/Main";
 
+const featuredBlocks = [
+  {
+    id: "large",
+    modifier: "featured-item--large",
+    image: "/images/featured-1.jpg",
+    eyebrow: "Nueva temporada",
+    title: "Llegaron las novedades de otoño",
+    cta: "Ver colección",
+    href: "/products",
+  },
+  {
+    id: "small-first",
+    modifier: "featured-item--small-first",
+    image: "/images/featured-2.jpg",
+    eyebrow: "Básicos",
+    title: "Remeras de algodón desde $1.290",
+    cta: "Ver básicos",
+    href: "/products?categoria=remeras",
+  },
+  {
+    id: "small-second",
+    modifier: "featured-item--small-second",
+    image: "/images/featured-3.jpg",
+    eyebrow: "Liquidación",
+    title: "Últimas unidades de verano",
+    cta: "Ver ofertas",
+    href: "/products?oferta=true",
+  },
+];
+
 const IndexPage = () => {
   return (
     <Layout>
       <PageIntro />
 
-      <section className="featured">
+      <section className="featured" aria-label="Destacados de temporada">
         <div className="container">
-          <article
-            style={{ backgroundImage: "url(/images/featured-1.jpg)" }}
-            className="featured-item featured-item-large"
-          >
-            <div className="featured-item__content">
-              <h3>New arrivals are now in!</h3>
-              <a href="#" className="btn btn--rounded">
-                Show Collection
-              </a>
-            </div>
-          </article>
-
-          <article
-            style={{ backgroundImage: "url(/images/featured-2.jpg)" }}
-            className="featured-item featured-item-small-first"
-          >
-            <div className="featured-item__content">
-              <h3>Basic t-shirts $29,99</h3>
-              <a href="#" className="btn btn--rounded">
-                More details
-              </a>
-            </div>
-          </article>
-
-          <article
-            style={{ backgroundImage: "url(/images/featured-3.jpg)" }}
-            className="featured-item featured-item-small"
-          >
-            <div className="featured-item__content">
-              <h3>Sale this summer</h3>
-              <a href="#" className="btn btn--rounded">
-                VIEW ALL
-              </a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <header className="section__intro">
-            <h4>Why should you choose us?</h4>
-          </header>
-
-          <ul className="shop-data-items">
-            <li>
-              <i className="icon-shipping" />
-              <div className="data-item__content">
-                <h4>Free Shipping</h4>
-                <p>
-                  All purchases over $199 are eligible for free shipping via
-                  USPS First Class Mail.
-                </p>
+          {featuredBlocks.map((block) => (
+            <article
+              key={block.id}
+              style={{ backgroundImage: `url(${block.image})` }}
+              className={`featured-item ${block.modifier}`}
+            >
+              <div className="featured-item__content">
+                <span className="eyebrow featured-item__eyebrow">
+                  {block.eyebrow}
+                </span>
+                <h3>{block.title}</h3>
+                <Link href={block.href} className="btn btn--secondary btn--md">
+                  {block.cta}
+                </Link>
               </div>
-            </li>
-
-            <li>
-              <i className="icon-payment" />
-              <div className="data-item__content">
-                <h4>Easy Payments</h4>
-                <p>
-                  All payments are processed instantly over a secure payment
-                  protocol.
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <i className="icon-cash" />
-              <div className="data-item__content">
-                <h4>Money-Back Guarantee</h4>
-                <p>
-                  If an item arrived damaged or you've changed your mind, you
-                  can send it back for a full refund.
-                </p>
-              </div>
-            </li>
-
-            <li>
-              <i className="icon-materials" />
-              <div className="data-item__content">
-                <h4>Finest Quality</h4>
-                <p>
-                  Designed to last, each of our products has been crafted with
-                  the finest materials.
-                </p>
-              </div>
-            </li>
-          </ul>
+            </article>
+          ))}
         </div>
       </section>
 

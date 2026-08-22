@@ -11,6 +11,9 @@ type LoginMail = {
   keepSigned: boolean;
 };
 
+const EMAIL_PATTERN =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const LoginPage = () => {
   const { register, handleSubmit, errors } = useForm<LoginMail>();
 
@@ -22,109 +25,126 @@ const LoginPage = () => {
   };
 
   return (
-    <Layout>
+    <Layout title="Iniciar sesión — MARIFER">
       <section className="form-page">
         <div className="container">
           <div className="back-button-section">
             <Link href="/products">
-              <i className="icon-left" />
-              Back to store
+              <i className="icon-left" aria-hidden="true" />
+              Volver a la tienda
             </Link>
           </div>
 
           <div className="form-block">
-            <h2 className="form-block__title">Log in</h2>
+            <h1 className="form-block__title">Iniciá sesión</h1>
             <p className="form-block__description">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s
+              Accedé a tus pedidos, favoritos y datos de envío guardados.
             </p>
 
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)} noValidate>
               <div className="form__input-row">
+                <label htmlFor="login-email" className="form-label">
+                  Email
+                </label>
                 <input
-                  className="form__input"
-                  placeholder="email"
-                  type="text"
+                  id="login-email"
+                  className="form-input"
+                  placeholder="vos@ejemplo.com"
+                  type="email"
                   name="email"
+                  autoComplete="email"
+                  aria-invalid={errors.email ? "true" : "false"}
                   ref={register("email", {
                     required: true,
-                    pattern:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    pattern: EMAIL_PATTERN,
                   })}
                 />
 
                 {errors.email && errors.email.type === "required" && (
-                  <p className="message message--error">
-                    This field is required
+                  <p className="form-error" role="alert">
+                    Ingresá tu email para continuar.
                   </p>
                 )}
 
                 {errors.email && errors.email.type === "pattern" && (
-                  <p className="message message--error">
-                    Please write a valid email
+                  <p className="form-error" role="alert">
+                    Ese email no parece válido. Revisalo e intentá de nuevo.
                   </p>
                 )}
               </div>
 
               <div className="form__input-row">
+                <label htmlFor="login-password" className="form-label">
+                  Contraseña
+                </label>
                 <input
-                  className="form__input"
+                  id="login-password"
+                  className="form-input"
                   type="password"
-                  placeholder="Password"
+                  placeholder="Tu contraseña"
                   name="password"
+                  autoComplete="current-password"
+                  aria-invalid={errors.password ? "true" : "false"}
                   ref={register("password", { required: true })}
                 />
                 {errors.password && errors.password.type === "required" && (
-                  <p className="message message--error">
-                    This field is required
+                  <p className="form-error" role="alert">
+                    Ingresá tu contraseña.
                   </p>
                 )}
               </div>
 
               <div className="form__info">
-                <div className="checkbox-wrapper">
-                  <label
-                    htmlFor="check-signed-in"
-                    className="checkbox checkbox--sm"
-                  >
-                    <input
-                      type="checkbox"
-                      name="keepSigned"
-                      id="check-signed-in"
-                      ref={register("keepSigned", { required: false })}
-                    />
-                    <span className="checkbox__check" />
-                    <p>Keep me signed in</p>
-                  </label>
-                </div>
+                <label
+                  htmlFor="check-signed-in"
+                  className="checkbox checkbox--sm"
+                >
+                  <input
+                    type="checkbox"
+                    name="keepSigned"
+                    id="check-signed-in"
+                    ref={register("keepSigned", { required: false })}
+                  />
+                  <span className="checkbox__check" />
+                  <p>Mantener la sesión iniciada</p>
+                </label>
                 <Link
                   href="/forgot-password"
                   className="form__info__forgot-password"
                 >
-                  Forgot password?
+                  ¿Olvidaste tu contraseña?
                 </Link>
-              </div>
-
-              <div className="form__btns">
-                <button type="button" className="btn-social fb-btn">
-                  <i className="icon-facebook" />
-                  Facebook
-                </button>
-                <button type="button" className="btn-social google-btn">
-                  <img src="/images/icons/gmail.svg" alt="gmail" /> Gmail
-                </button>
               </div>
 
               <button
                 type="submit"
-                className="btn btn--rounded btn--yellow btn-submit"
+                className="btn btn--primary btn--lg btn-submit"
               >
-                Sign in
+                Ingresar
               </button>
 
+              <div className="form__divider" aria-hidden="true">
+                o continuá con
+              </div>
+
+              <div className="form__btns">
+                <button type="button" className="btn-social">
+                  <i className="icon-facebook" aria-hidden="true" />
+                  Facebook
+                </button>
+                <button type="button" className="btn-social">
+                  <img
+                    src="/images/icons/gmail.svg"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  Google
+                </button>
+              </div>
+
               <p className="form__signup-link">
-                Not a member yet? <Link href="/register">Sign up</Link>
+                ¿Todavía no tenés cuenta?{" "}
+                <Link href="/register">Registrate</Link>
               </p>
             </form>
           </div>

@@ -761,6 +761,10 @@ select {
     }
   }
 
+  &.site-header--fixed {
+    box-shadow: var(--shadow-md);
+  }
+
   .btn-hamburger {
     display: flex;
     flex-direction: column;
@@ -886,7 +890,7 @@ select {
     display: inline-block;
     vertical-align: bottom;
     height: 1em;
-    width: auto;
+    width: 1.6em;
     border-radius: 8px;
     object-fit: cover;
     margin: 0 2px;
@@ -1684,45 +1688,6 @@ select {
     }
   }
 
-  .checkbox-color-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .checkbox-color {
-    position: relative;
-    flex: 0 0 calc(100% / 6 - var(--space-2));
-    @include breakpoint(phone) {
-      flex: 0 0 calc(100% / 8 - var(--space-2));
-    }
-    input {
-      display: none;
-    }
-    .checkbox__check {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-sm);
-      transition: all var(--dur-fast) var(--ease-standard);
-      position: relative;
-      .checkbox__color {
-        position: absolute;
-        inset: 6px;
-        border-radius: calc(var(--radius-sm) - 2px);
-      }
-    }
-    input:checked + .checkbox__check {
-      border-color: var(--violet-700);
-      border-width: 2px;
-      box-shadow: 0 0 0 2px var(--focus-ring);
-    }
-    &:first-of-type .checkbox__check {
-      border-left-width: 1px;
-    }
-  }
-
   .product-single__info {
     .product-single__info-btns {
       display: flex;
@@ -1739,6 +1704,49 @@ select {
         }
       }
     }
+  }
+}
+
+/* ==========================================================================
+   COLOR SWATCHES — shared by filters sidebar and product page
+   ========================================================================== */
+
+.checkbox-color-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.checkbox-color {
+  position: relative;
+  flex: 0 0 calc(100% / 6 - var(--space-2));
+  @include breakpoint(phone) {
+    flex: 0 0 calc(100% / 8 - var(--space-2));
+  }
+  input {
+    display: none;
+  }
+  .checkbox__check {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-sm);
+    transition: all var(--dur-fast) var(--ease-standard);
+    position: relative;
+    .checkbox__color {
+      position: absolute;
+      inset: 6px;
+      border-radius: calc(var(--radius-sm) - 2px);
+    }
+  }
+  input:checked + .checkbox__check {
+    border-color: var(--violet-700);
+    border-width: 2px;
+    box-shadow: 0 0 0 2px var(--focus-ring);
+  }
+  &:first-of-type .checkbox__check {
+    border-left-width: 1px;
   }
 }
 
@@ -1963,7 +1971,7 @@ select {
    QUANTITY / SELECT / CHECKBOX — Styled to match system
    ========================================================================== */
 
-.quantity-buttons {
+.quantity-button {
   display: inline-flex;
   align-items: center;
   border: 1px solid var(--border-default);
@@ -2038,6 +2046,11 @@ select {
   font-size: var(--text-body);
   color: var(--text-body);
   cursor: pointer;
+  min-height: 32px;
+  p {
+    margin: 0;
+    max-width: none;
+  }
   input {
     display: none;
   }
@@ -2171,6 +2184,9 @@ select {
 .z-tooltip {
   z-index: var(--z-tooltip);
 }
+
+// Page-level blocks (catalog, PDP extras, cart, checkout, auth, 404)
+@import "./partials/pages.scss";
 
 /* ==========================================================================
    PRINT

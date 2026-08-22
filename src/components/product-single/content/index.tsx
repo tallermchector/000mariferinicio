@@ -58,26 +58,29 @@ const Content = ({ product }: ProductContent) => {
     dispatch(addProduct(productStore));
   };
 
+  const hasDiscount = Boolean(product.discount) && Number(product.discount) > 0;
+
   return (
-    <section className="product-content">
+    <section className="product-content" aria-labelledby="product-name">
       <div className="product-content__intro">
-        <h5 className="product__id">
-          Product ID:
-          <br />
-          {product.id}
-        </h5>
-        <span className="product-on-sale">Sale</span>
-        <h2 className="product__name">{product.name}</h2>
+        {hasDiscount && (
+          <span className="product-on-sale">-{product.discount}% Oferta</span>
+        )}
+        <h1 id="product-name" className="product__name">
+          {product.name}
+        </h1>
 
         <div className="product__prices">
           <h4>${product.currentPrice}</h4>
-          {product.discount && <span>${product.price}</span>}
+          {hasDiscount && <span>${product.price}</span>}
         </div>
+        <p className="product__installments">6 cuotas sin interés</p>
+        <p className="product__id">Código: {product.id}</p>
       </div>
 
       <div className="product-content__filters">
         <div className="product-filter-item">
-          <h5>Color:</h5>
+          <h5>Color</h5>
           <div className="checkbox-color-wrapper">
             {productsColors.map((type) => (
               <CheckboxColor
@@ -93,55 +96,74 @@ const Content = ({ product }: ProductContent) => {
         </div>
         <div className="product-filter-item">
           <h5>
-            Size: <strong>See size table</strong>
+            <label htmlFor="product-size">Talle</label>
           </h5>
-          <div className="checkbox-color-wrapper">
-            <div className="select-wrapper">
-              <select onChange={onSelectChange}>
-                <option>Choose size</option>
-                {productsSizes.map((type) => (
-                  <option key={type.id} value={type.label}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
-            </div>
+          <div className="select-wrapper">
+            <select id="product-size" onChange={onSelectChange} defaultValue="">
+              <option value="" disabled>
+                Elegí tu talle
+              </option>
+              {productsSizes.map((type) => (
+                <option key={type.id} value={type.label}>
+                  {type.label}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
         <div className="product-filter-item">
-          <h5>Quantity:</h5>
+          <h5>Cantidad</h5>
           <div className="quantity-buttons">
-            <div className="quantity-button">
+            <div className="quantity-button" role="group" aria-label="Cantidad">
               <button
                 type="button"
-                onClick={() => setCount(count - 1)}
+                onClick={() => setCount(Math.max(1, count - 1))}
                 className="quantity-button__btn"
+                aria-label="Quitar una unidad"
+                disabled={count <= 1}
               >
                 -
               </button>
-              <span>{count}</span>
+              <span aria-live="polite">{count}</span>
               <button
                 type="button"
                 onClick={() => setCount(count + 1)}
                 className="quantity-button__btn"
+                aria-label="Agregar una unidad"
               >
                 +
               </button>
             </div>
 
             <button
-              type="submit"
+              type="button"
               onClick={() => addToCart()}
-              className="btn btn--rounded btn--yellow"
+              className="btn btn--primary btn--lg"
             >
-              Add to cart
+              Agregar al carrito
             </button>
             <button
               type="button"
               onClick={toggleFav}
               className={`btn-heart ${isFavourite ? "btn-heart--active" : ""}`}
+              aria-label={
+                isFavourite ? "Quitar de favoritos" : "Agregar a favoritos"
+              }
+              aria-pressed={isFavourite}
             >
-              <i className="icon-heart" />
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill={isFavourite ? "currentColor" : "none"}
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+              </svg>
             </button>
           </div>
         </div>

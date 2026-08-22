@@ -53,44 +53,51 @@ const ShoppingCart = ({
     <tr>
       <td>
         <div className="cart-product">
-          <div className="cart-product__img">
+          <div className="cart-product__image">
             <img src={thumb} alt="" />
           </div>
 
-          <div className="cart-product__content">
-            <h3>{name}</h3>
-            <p>#{id}</p>
+          <div className="cart-product__info">
+            <h4>{name}</h4>
+            <p className="cart-product__variant">Código {id}</p>
           </div>
         </div>
       </td>
-      <td className="cart-item-before" data-label="Color">
-        {color}
-      </td>
-      <td className="cart-item-before" data-label="Size">
-        {size}
-      </td>
-      <td>
-        <div className="quantity-button">
+      <td data-label="Color">{color || "—"}</td>
+      <td data-label="Talle">{size || "—"}</td>
+      <td data-label="Cantidad">
+        <div className="quantity-button" role="group" aria-label="Cantidad">
           <button
             type="button"
             onClick={() => setProductCount(count - 1)}
             className="quantity-button__btn"
+            aria-label="Quitar una unidad"
+            disabled={count <= 1}
           >
             -
           </button>
-          <span>{count}</span>
+          <span aria-live="polite">{count}</span>
           <button
             type="button"
             onClick={() => setProductCount(count + 1)}
             className="quantity-button__btn"
+            aria-label="Agregar una unidad"
           >
             +
           </button>
         </div>
       </td>
-      <td>${price}</td>
+      <td data-label="Precio" className="cart-table__price">
+        ${price}
+      </td>
       <td className="cart-item-cancel">
-        <i className="icon-cancel" onClick={() => removeFromCart()} />
+        <button
+          type="button"
+          onClick={() => removeFromCart()}
+          aria-label={`Quitar ${name} del carrito`}
+        >
+          <i className="icon-cancel" aria-hidden="true" />
+        </button>
       </td>
     </tr>
   );

@@ -32,10 +32,16 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 const Product = ({ product }: ProductPageType) => {
   const [showBlock, setShowBlock] = useState("description");
+  const reviewsCount = product.reviews?.length ?? 0;
 
   return (
-    <Layout>
-      <Breadcrumb />
+    <Layout title={`${product.name} — MARIFER`}>
+      <Breadcrumb
+        items={[
+          { label: "Productos", href: "/products" },
+          { label: product.name },
+        ]}
+      />
 
       <section className="product-single">
         <div className="container">
@@ -45,20 +51,28 @@ const Product = ({ product }: ProductPageType) => {
           </div>
 
           <div className="product-single__info">
-            <div className="product-single__info-btns">
+            <div
+              className="product-single__info-btns"
+              role="tablist"
+              aria-label="Información del producto"
+            >
               <button
                 type="button"
+                role="tab"
+                aria-selected={showBlock === "description"}
                 onClick={() => setShowBlock("description")}
-                className={`btn btn--rounded ${showBlock === "description" ? "btn--active" : ""}`}
+                className={`btn btn--secondary btn--md ${showBlock === "description" ? "btn--active" : ""}`}
               >
-                Description
+                Descripción
               </button>
               <button
                 type="button"
+                role="tab"
+                aria-selected={showBlock === "reviews"}
                 onClick={() => setShowBlock("reviews")}
-                className={`btn btn--rounded ${showBlock === "reviews" ? "btn--active" : ""}`}
+                className={`btn btn--secondary btn--md ${showBlock === "reviews" ? "btn--active" : ""}`}
               >
-                Reviews (2)
+                Opiniones ({reviewsCount})
               </button>
             </div>
 
