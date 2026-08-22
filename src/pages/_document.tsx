@@ -24,8 +24,16 @@ export default class CustomDocument extends Document<DocumentProps> {
     const { isProduction } = this.props;
 
     return (
-      <Html lang="en">
+      <Html lang="es">
         <Head>
+          {/* Font preloading for performance */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin="anonymous"
+          />
+
           {/* We only want to add the scripts if in production */}
           {isProduction && (
             <>

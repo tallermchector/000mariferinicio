@@ -6,7 +6,7 @@ import "react-rater/lib/react-rater.css";
 
 // types
 import type { AppProps } from "next/app";
-import { Poppins } from "next/font/google";
+import { Outfit, Manrope, Lobster_Two, JetBrains_Mono } from "next/font/google";
 import Router from "next/router";
 import React, { Fragment } from "react";
 
@@ -21,17 +21,44 @@ if (isProduction) {
   Router.events.on("routeChangeComplete", (url: string) => gtag.pageview(url));
 }
 
-const poppins = Poppins({
+// Fonts - MARIFER Design System
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--main-font",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const lobsterTwo = Lobster_Two({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-brand",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 const MyApp = ({ Component, pageProps }: AppProps) => (
   <Fragment>
     <style jsx global>{`
       :root {
-        --main-font: ${poppins.style.fontFamily};
+        --font-display: ${outfit.style.fontFamily};
+        --font-body: ${manrope.style.fontFamily};
+        --font-brand: ${lobsterTwo.style.fontFamily};
+        --font-mono: ${jetbrainsMono.style.fontFamily};
       }
     `}</style>
     <Component {...pageProps} />

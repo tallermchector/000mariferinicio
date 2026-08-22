@@ -1,42 +1,295 @@
 :root {
-  // colors
-  --color-orange: #FBB03B;
-  --color-orange-light: #FFF3DF;
-  --color-black: #333333;
-  --color-text: #868686;
-  --color-white: #FFFFFF;
-  --color-gray: #706c61;
-  --color-red: #FF0000;
+  /* ==========================================================================
+     MARIFER DESIGN SYSTEM — Color Palette
+     ========================================================================== */
+
+  /* --- Brand Violet Ramp (OKLCH-balanced) --- */
+  --violet-50: #faf7fb; /* Violet Whisper — subtlest brand tint */
+  --violet-100: #f2e6f4; /* Violet Mist — primary surface tint */
+  --violet-200: #e3cde8; /* Violet Haze — borders, disabled */
+  --violet-300: #caa8d3; /* Violet Blush — interactive borders, focus ring base */
+  --violet-400: #a97cb6; /* Violet Petal — icon accents */
+  --violet-500: #8a559a; /* Violet Orchid — link hover, brand text on light */
+  --violet-600: #683a79; /* Violet Plum — primary hover, pressed */
+  --violet-700: #452453; /* Violet Core — BRAND ANCHOR: logo, primary actions, headlines */
+  --violet-800: #351b41; /* Violet Midnight — dark mode surfaces */
+  --violet-900: #241230; /* Violet Ink — dark mode canvas, strongest text */
+  --violet-950: #150a1c; /* Violet Abyss — absolute depth */
+
+  /* --- Warm Neutrals (Violet-tinted) --- */
+  --neutral-0: #ffffff; /* Pure white */
+  --neutral-50: #faf8fb; /* Neutral Whisper — card interiors */
+  --neutral-100: #f4f1f6; /* Neutral Mist — muted surfaces */
+  --neutral-200: #e8e3ec; /* Neutral Haze — hairline borders, dividers */
+  --neutral-300: #d3ccd8; /* Neutral Blush — default borders, input resting */
+  --neutral-400: #aaa1b0; /* Neutral Petal — disabled text, placeholder icons */
+  --neutral-500: #7d7384; /* Neutral Orchid — muted body text, secondary labels */
+  --neutral-600: #5a5261; /* Neutral Plum */
+  --neutral-700: #403945; /* Neutral Midnight — body copy, form labels */
+  --neutral-900: #1a161d; /* Neutral Ink — strongest headings on light */
+
+  /* --- Singular Brand Accent (Gold Amber) --- */
+  --gold-100: #fbf1de; /* Gold Glow — free-shipping banner, soft highlight bg */
+  --gold-300: #eed6a3; /* Gold Sand */
+  --gold-500: #d4a15a; /* Gold Amber — THE ONLY BRAND ACCENT: highlights, "6 cuotas", CTAs needing warmth */
+  --gold-700: #96662a; /* Gold Bronze — gold text on light */
+
+  /* --- Semantic Aliases (Commerce/State — NOT brand accents) --- */
+  --berry-100: #fde9ef; /* Berry Mist — sale soft backgrounds */
+  --berry-300: #f6b4c8; /* Berry Blush */
+  --berry-500: #d94f78; /* Berry Pop — SALE/URGENCY: sale badges, discount prices */
+  --berry-700: #9c2b4d; /* Berry Deep — sale text on light */
+  --success-500: #10b981; /* Success states */
+  --error-500: #e11d48; /* Error states, destructive actions */
+
+  /* --- Semantic Component Tokens (USE THESE IN COMPONENTS) --- */
+  /* Surfaces */
+  --surface-canvas: var(
+    --neutral-0
+  ); /* Page background — NEVER pure white in practice, use #FFFCFF via body */
+  --surface-card: var(--neutral-0); /* Card/container fill */
+  --surface-subtle: var(--violet-100); /* Subtle brand-tinted surface */
+  --surface-muted: var(--neutral-100); /* Muted alternate rows */
+  --surface-inset: var(--neutral-200); /* Inset/sunken surfaces */
+  --surface-inverse: var(--violet-700); /* Inverse/dark surfaces */
+
+  /* Text */
+  --text-strong: var(--violet-900); /* Primary headings, strong emphasis */
+  --text-body: var(--neutral-700); /* Base body copy */
+  --text-muted: var(--neutral-500); /* Secondary info, timestamps */
+  --text-faint: var(--neutral-400); /* Hints, placeholders, disabled */
+  --text-on-brand: var(--neutral-0); /* Text on violet-700/brand backgrounds */
+  --text-brand: var(--violet-700); /* Brand-colored text on light */
+  --text-sale: var(--berry-500); /* Sale prices, urgency */
+  --text-gold: var(--gold-500); /* Highlights, installments */
+
+  /* Borders */
+  --border-hairline: var(--neutral-200); /* 1px structural lines */
+  --border-default: var(--neutral-300); /* Default input/card borders */
+  --border-strong: var(--violet-300); /* Focus/interactive borders */
+  --border-brand: var(--violet-700); /* Brand emphasis borders */
+
+  /* Actions */
+  --action-primary: var(--violet-700); /* Primary button bg */
+  --action-primary-hover: var(--violet-600); /* Primary hover */
+  --action-primary-press: var(--violet-800); /* Primary pressed */
+  --action-primary-soft: var(--violet-100); /* Soft primary variant */
+  --action-secondary-bg: var(--neutral-0); /* Secondary button bg */
+  --action-secondary-text: var(--violet-900); /* Secondary button text */
+  --action-secondary-border: var(--neutral-300); /* Secondary button border */
+  --action-sale: var(--berry-500); /* Sale button bg */
+  --action-sale-hover: var(--berry-700); /* Sale button hover */
+  --focus-ring: rgba(69, 36, 83, 0.28); /* Focus ring (violet-700 @ 28%) */
+
+  /* Commerce */
+  --price-current: var(--violet-900);
+  --price-was: var(--neutral-400);
+  --sale: var(--berry-500);
+  --highlight: var(--gold-500);
+
+  /* ==========================================================================
+     Typography
+     ========================================================================== */
+  --font-display:
+    "Outfit", "Manrope", system-ui, sans-serif; /* Headlines — geometric, warm */
+  --font-body:
+    "Manrope", "Outfit", system-ui, sans-serif; /* UI, copy — humanist, readable */
+  --font-brand: "Lobster Two", cursive; /* Logo/marquee moments only */
+  --font-mono:
+    "JetBrains Mono", "Fira Code", monospace; /* Code, tabular numbers, metadata */
+
+  /* Font Weights */
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
+
+  /* Tracking */
+  --tracking-tight: -0.025em; /* Hero headlines */
+  --tracking-head: -0.012em; /* h1–h3 */
+  --tracking-normal: 0; /* Body */
+  --tracking-wide: 0.09em; /* Tags, uppercase eyebrows */
+  --tracking-wider: 0.16em; /* Section eyebrows */
+
+  /* Type Scale (Clamped, 1.25 ratio compressed) */
+  --text-hero: clamp(44px, 6vw, 72px); /* Hero headlines */
+  --text-h1: 36px; /* Page titles */
+  --text-h2: 28px; /* Section headers */
+  --text-h3: 20px; /* Card titles */
+  --text-h4: 17px; /* Button lg, product names */
+  --text-lead: 18px; /* Hero subcopy */
+  --text-body: 15px; /* BASE body copy */
+  --text-small: 13px; /* Secondary info, timestamps */
+  --text-caption: 12px; /* Hints, errors, footnotes (MINIMUM) */
+  --text-tag: 11px; /* Uppercase tags, categories */
+  --text-eyebrow: 11px; /* Section eyebrows */
+
+  /* Line Heights */
+  --leading-tight: 1.08; /* Hero, headlines */
+  --leading-snug: 1.2; /* Headings */
+  --leading-normal: 1.45; /* Body, lead */
+  --leading-relaxed: 1.6; /* Long-form copy */
+
+  /* ==========================================================================
+     Spacing Scale (4px base, 1.10× progression)
+     ========================================================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 56px;
+  --space-9: 72px;
+  --space-10: 96px;
+
+  /* Layout Spacing Aliases */
+  --gutter-desktop: var(--space-5); /* 24px */
+  --gutter-mobile: var(--space-3); /* 12px */
+  --container-max: 1400px; /* Max container width */
+  --container-padding-mobile: 16px;
+  --container-padding-tablet: 24px;
+  --container-padding-desktop: 48px;
+  --section-gap-major: var(--space-8); /* 56px between major sections */
+  --section-gap-minor: var(--space-6); /* 32px between sub-sections */
+  --card-padding: var(--space-3); /* 12px internal card padding */
+  --card-gap: var(--space-3); /* 12px card content gap */
+  --header-height: 72px; /* Fixed header height */
+  --sidebar-width: 264px; /* Fixed filters sidebar */
+
+  /* ==========================================================================
+     Border Radius
+     ========================================================================== */
+  --radius-pill: 999px; /* Buttons, inputs, badges — fully rounded */
+  --radius-sm: 10px; /* Media inside cards, thumbnails */
+  --radius-card: 14px; /* Cards, containers — generous */
+  --radius-lg: 20px; /* Hero/product images */
+  --radius-focus: 4px; /* Focus ring radius */
+
+  /* ==========================================================================
+     Shadows & Elevation (All tinted with violet-900)
+     ========================================================================== */
+  --shadow-xs: 0 1px 2px rgba(36, 18, 48, 0.06); /* Resting cards */
+  --shadow-sm: 0 2px 6px rgba(36, 18, 48, 0.07); /* Subtle lift */
+  --shadow-md: 0 6px 18px rgba(36, 18, 48, 0.1); /* Dropdowns, modals */
+  --shadow-lg: 0 14px 36px rgba(36, 18, 48, 0.14); /* Hover cards, elevated panels */
+  --shadow-brand: 0 6px 18px rgba(69, 36, 83, 0.24); /* Primary buttons (violet-700) */
+  --shadow-sale: 0 6px 18px rgba(217, 79, 120, 0.24); /* Sale buttons (berry-500) */
+  --shadow-inset: inset 0 1px 0 rgba(255, 252, 255, 0.5); /* Pressed/active surfaces */
+
+  /* ==========================================================================
+     Motion & Animation
+     ========================================================================== */
+  --dur-fast: 140ms;
+  --dur-base: 200ms;
+  --dur-slow: 320ms;
+  --dur-panel: 420ms;
+
+  --ease-standard: cubic-bezier(0.22, 0.61, 0.36, 1); /* Most transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* Exits */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* Complex */
+
+  /* Spring Physics (for JS animations): stiffness: 100, damping: 20 */
+
+  /* ==========================================================================
+     Z-Index Scale (Minimal — only for layer contexts)
+     ========================================================================== */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-header: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+
+  /* ==========================================================================
+     Breakpoints
+     ========================================================================== */
+  --bp-mobile: 375px; /* iPhone SE */
+  --bp-mobile-lg: 390px; /* iPhone 14 */
+  --bp-tablet: 768px; /* iPad */
+  --bp-laptop: 1024px; /* Small laptop */
+  --bp-desktop: 1440px; /* Desktop */
 }
 
+/* ==========================================================================
+   Dark Mode — Brand Theme
+   ========================================================================== */
+[data-theme="brand"] {
+  --surface-canvas: var(--violet-700);
+  --surface-card: var(--violet-800);
+  --surface-subtle: var(--violet-800);
+  --surface-muted: rgba(255, 255, 255, 0.06);
+  --surface-inset: rgba(255, 255, 255, 0.1);
+  --surface-inverse: var(--neutral-0);
+
+  --text-strong: var(--violet-200);
+  --text-body: var(--violet-200);
+  --text-muted: var(--neutral-400);
+  --text-faint: var(--neutral-500);
+  --text-on-brand: var(--violet-900);
+  --text-brand: var(--violet-200);
+
+  --border-hairline: rgba(255, 255, 255, 0.16);
+  --border-default: rgba(255, 255, 255, 0.2);
+  --border-strong: rgba(255, 255, 255, 0.28);
+  --border-brand: var(--neutral-0);
+
+  --action-primary: var(--neutral-0);
+  --action-primary-hover: var(--neutral-100);
+  --action-primary-press: var(--neutral-200);
+  --action-secondary-bg: transparent;
+  --action-secondary-text: var(--neutral-0);
+  --action-secondary-border: rgba(255, 255, 255, 0.28);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 14px 36px rgba(0, 0, 0, 0.35);
+  --shadow-brand: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
 @mixin inputPlaceholder() {
-  $selector: '';
+  $selector: "";
   $prefixes: (
-      moz: "::-moz",
-      webkit: "::-webkit",
-      ie: ":-ms"
+    moz: "::-moz",
+    webkit: "::-webkit",
+    ie: ":-ms",
   );
   @each $prop, $value in $prefixes {
-      @if $prop != "moz" {
-          $selector: #{$value}-input-placeholder;
-      } @else {
-          $selector: #{$value}-placeholder;
+    @if $prop != "moz" {
+      $selector: #{$value}-input-placeholder;
+    } @else {
+      $selector: #{$value}-placeholder;
+    }
+    @if & {
+      &#{$selector} {
+        @content;
       }
-      @if & {
-          &#{$selector} {
-              @content;
-          }
-      } @else {
-          #{$selector} {
-              @content;
-          }
+    } @else {
+      #{$selector} {
+        @content;
       }
+    }
   }
   &::placeholder {
     @content;
   }
 }
 
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
 
 @keyframes skeleton {
   0% {
@@ -44,5 +297,25 @@
   }
   100% {
     background-position: calc(200px + 100%) 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
   }
 }

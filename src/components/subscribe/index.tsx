@@ -1,19 +1,40 @@
+import Image from "next/image";
+
 const Subscribe = () => {
   return (
-    <section className="subscribe">
+    <section className="subscribe" aria-labelledby="subscribe-heading">
       <div className="container">
-        <div
-          style={{ backgroundImage: "url(/images/subscribe.jpg)" }}
-          className="subscribe__content"
-        >
-          <h4>
-            Subscribe to our newsletter and receive exclusive offers every week
+        <div className="subscribe__content">
+          <Image
+            src="/images/subscribe.jpg"
+            alt=""
+            fill
+            priority
+            className="subscribe__bg"
+            aria-hidden="true"
+            style={{ objectFit: "cover", objectPosition: "center" }}
+          />
+          <h4 id="subscribe-heading">
+            Suscribite y recibí novedades, lanzamientos y beneficios exclusivos
           </h4>
-
-          <form className="subscribe__form">
-            <input type="email" placeholder="Email address" />
-            <button type="submit" className="btn btn--rounded btn--yellow">
-              Subscribe
+          <form
+            className="subscribe__form"
+            action="/api/newsletter"
+            method="POST"
+          >
+            <label htmlFor="newsletter-email" className="visually-hidden">
+              Tu email
+            </label>
+            <input
+              id="newsletter-email"
+              type="email"
+              name="email"
+              placeholder="Tu email"
+              required
+              autoComplete="email"
+            />
+            <button type="submit" className="btn btn--primary btn--md">
+              Suscribirme
             </button>
           </form>
         </div>
