@@ -1,0 +1,6 @@
+# Código autogenerado por Prisma
+src/generated
+.next
+out
+node_modules
+pnpm-lock.yaml

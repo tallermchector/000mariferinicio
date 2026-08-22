@@ -41,7 +41,10 @@
     "react/no-unknown-property": [
       2,
       {
-        "ignore": ["jsx", "global"]
+        "ignore": [
+          "jsx",
+          "global"
+        ]
       }
     ],
     "unused-imports/no-unused-vars": [
@@ -61,5 +64,11 @@
     "import/resolver": {
       "typescript": {}
     }
-  }
+  },
+  "ignorePatterns": [
+    "src/generated/**",
+    ".next/**",
+    "out/**",
+    "node_modules/**"
+  ]
 }
