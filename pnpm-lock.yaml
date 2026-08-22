@@ -92,7 +92,7 @@ importers:
         version: 9.39.5
       '@prisma/cli':
         specifier: 8.0.0-rc.7
-        version: 8.0.0-rc.7(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typanion@3.14.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
+        version: 8.0.0-rc.7(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typanion@3.14.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
       '@types/lodash':
         specifier: ^4.17.25
         version: 4.17.25
@@ -3720,6 +3720,12 @@ packages:
     resolution: {integrity: sha512-FBrGau0IXmuqg4haEZRBfHNWB5mUARw6hNwPDXXGg0XzVJ50mr/9hb267lvpVMnhZ1FON3qNd4Xfcez1rbFwSg==}
     engines: {node: '>= 8.0'}
 
+  mysql2@3.23.4:
+    resolution: {integrity: sha512-J1Rgl8Oy5iw3mOBjKeTMQ3cJNjMYtJYavQVXShsMtSj9rKV8Q1+QaGKNJqDVQFcNINqYYp6Vxd90r69cCoBxBA==}
+    engines: {node: '>= 8.0'}
+    peerDependencies:
+      '@types/node': '>= 8'
+
   named-placeholders@1.1.6:
     resolution: {integrity: sha512-Tz09sEL2EEuv5fFowm419c1+a/jSMiBjI9gHxVLrVdbUkkNUUfjsVYs9pVZu5oCon/kmRh9TfLEObFtkVxmY0w==}
     engines: {node: '>=8.0.0'}
@@ -4442,6 +4448,10 @@ packages:
   split2@4.2.0:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
+
+  sql-escaper@1.5.1:
+    resolution: {integrity: sha512-4toX5E1fQbBrpfXidaHnF0669nkAdETeIPTs2SUjxxD7RRIs9ICG4gtpmfc68JCEKehsdwLFqBu9VlQqZ1P1gg==}
+    engines: {bun: '>=1.0.0', deno: '>=2.0.0', node: '>=12.0.0'}
 
   sqlstring@2.3.3:
     resolution: {integrity: sha512-qC9iz2FlN7DQl3+wjwn3802RTyjCx7sDvfQEXchwa6CWOx07/WVfh91gBmQ9fahw8snwGEWU3xGzOt4tFyHLxg==}
@@ -6045,10 +6055,10 @@ snapshots:
     transitivePeerDependencies:
       - magicast
 
-  '@prisma/cli@8.0.0-rc.7(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typanion@3.14.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
+  '@prisma/cli@8.0.0-rc.7(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typanion@3.14.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
     dependencies:
       '@prisma/cli-engine': 0.2.0(magicast@0.5.4)
-      '@prisma/composer-cli': 0.11.0(@prisma/cli-engine@0.2.0(magicast@0.5.4))(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
+      '@prisma/composer-cli': 0.11.0(@prisma/cli-engine@0.2.0(magicast@0.5.4))(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
       '@prisma/compute-sdk': 0.39.0(@prisma/management-api-sdk@1.55.0)(supports-color@7.2.0)
       '@prisma/credentials-store': 7.9.1
       '@prisma/management-api-sdk': 1.55.0
@@ -6064,6 +6074,7 @@ snapshots:
       - '@effect/platform-node'
       - '@effect/sql-pg'
       - '@mongodb-js/zstd'
+      - '@types/node'
       - '@types/react'
       - bare-abort-controller
       - bare-buffer
@@ -6099,11 +6110,11 @@ snapshots:
       prisma: 7.9.1(@types/react-dom@18.3.7(@types/react@18.3.31))(@types/react@18.3.31)(magicast@0.5.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.9.3)
       typescript: 5.9.3
 
-  '@prisma/composer-cli@0.11.0(@prisma/cli-engine@0.2.0(magicast@0.5.4))(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
+  '@prisma/composer-cli@0.11.0(@prisma/cli-engine@0.2.0(magicast@0.5.4))(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
     dependencies:
       '@prisma/cli-engine': 0.2.0(magicast@0.5.4)
-      '@prisma/composer': 0.11.0(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
-      alchemy: 2.0.0-beta.67(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
+      '@prisma/composer': 0.11.0(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
+      alchemy: 2.0.0-beta.67(@types/node@17.0.45)(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
       c12: 3.3.4(magicast@0.5.4)
       effect: 4.0.0-beta.103
       esbuild: 0.28.2
@@ -6113,6 +6124,7 @@ snapshots:
       - '@effect/platform-node'
       - '@effect/sql-pg'
       - '@mongodb-js/zstd'
+      - '@types/node'
       - '@types/react'
       - bufferutil
       - drizzle-kit
@@ -6135,11 +6147,11 @@ snapshots:
       - workerd
       - ws
 
-  '@prisma/composer@0.11.0(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
+  '@prisma/composer@0.11.0(@types/node@17.0.45)(@types/react@18.3.31)(magicast@0.5.4)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)':
     dependencies:
       '@prisma/management-api-sdk': 1.64.0
       '@standard-schema/spec': 1.1.0
-      alchemy: 2.0.0-beta.67(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
+      alchemy: 2.0.0-beta.67(@types/node@17.0.45)(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3)
       arktype: 2.2.3
       c12: 3.3.4(magicast@0.5.4)
       effect: 4.0.0-beta.103
@@ -6150,6 +6162,7 @@ snapshots:
       - '@effect/platform-node'
       - '@effect/sql-pg'
       - '@mongodb-js/zstd'
+      - '@types/node'
       - '@types/react'
       - bufferutil
       - drizzle-kit
@@ -7089,7 +7102,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  alchemy@2.0.0-beta.67(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3):
+  alchemy@2.0.0-beta.67(@types/node@17.0.45)(@types/react@18.3.31)(effect@4.0.0-beta.103)(supports-color@7.2.0)(typescript@5.9.3)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0))(vitest@4.1.11(@types/node@17.0.45)(vite@8.2.2(@types/node@17.0.45)(esbuild@0.28.2)(jiti@2.7.0)(sass@1.103.1)(tsx@4.23.12)(yaml@2.9.0)))(workerd@1.20260704.1)(ws@8.21.3):
     dependencies:
       '@alchemy.run/node-utils': 0.0.5
       '@aws-sdk/credential-providers': 3.1115.0
@@ -7123,7 +7136,7 @@ snapshots:
       jszip: 3.10.1
       libsodium-wrappers: 0.8.4
       mongodb: 6.21.0(@aws-sdk/credential-providers@3.1115.0)
-      mysql2: 3.15.3
+      mysql2: 3.23.4(@types/node@17.0.45)
       pathe: 2.0.3
       pg: 8.23.0
       picomatch: 4.0.5
@@ -7136,6 +7149,7 @@ snapshots:
       ws: 8.21.3
     transitivePeerDependencies:
       - '@mongodb-js/zstd'
+      - '@types/node'
       - '@types/react'
       - bufferutil
       - encoding
@@ -8815,6 +8829,17 @@ snapshots:
       seq-queue: 0.0.5
       sqlstring: 2.3.3
 
+  mysql2@3.23.4(@types/node@17.0.45):
+    dependencies:
+      '@types/node': 17.0.45
+      aws-ssl-profiles: 1.1.2
+      generate-function: 2.3.1
+      iconv-lite: 0.7.3
+      long: 5.3.2
+      lru.min: 1.1.4
+      named-placeholders: 1.1.6
+      sql-escaper: 1.5.1
+
   named-placeholders@1.1.6:
     dependencies:
       lru.min: 1.1.4
@@ -9614,6 +9639,8 @@ snapshots:
       memory-pager: 1.5.0
 
   split2@4.2.0: {}
+
+  sql-escaper@1.5.1: {}
 
   sqlstring@2.3.3: {}
 
