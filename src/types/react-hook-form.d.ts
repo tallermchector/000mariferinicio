@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // react-hook-form v6 types declaration
 declare module "react-hook-form" {
   export interface FieldError {
