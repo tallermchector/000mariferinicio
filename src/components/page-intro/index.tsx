@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import SwiperCore, { EffectFade, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -60,6 +61,7 @@ const PageIntro = () => {
 
   const renderHeadline = (
     parts: Array<string | { type: "image"; src: string; alt: string }>,
+    isFirstSlide: boolean,
   ) => (
     <h2 className="page-intro__headline">
       {parts.map((part, i) =>
@@ -72,8 +74,10 @@ const PageIntro = () => {
             alt={part.alt}
             width={64}
             height={64}
+            sizes="64px"
             className="headline-inline-image"
-            loading="lazy"
+            loading={isFirstSlide ? "eager" : "lazy"}
+            priority={isFirstSlide}
           />
         ),
       )}
@@ -102,16 +106,17 @@ const PageIntro = () => {
                       slide.headline as Array<
                         string | { type: "image"; src: string; alt: string }
                       >,
+                      index === 0,
                     )}
                     <p className="page-intro__subcopy lead">{slide.subcopy}</p>
                     <div className="page-intro__cta">
-                      <a
+                      <Link
                         href={slide.ctaHref}
                         className="btn btn--primary btn--lg"
                         aria-label={slide.ctaText}
                       >
                         {slide.ctaText}
-                      </a>
+                      </Link>
                     </div>
                   </div>
 
@@ -122,6 +127,7 @@ const PageIntro = () => {
                       alt={slide.visual.alt}
                       width={600}
                       height={750}
+                      sizes="(max-width: 768px) 100vw, 500px"
                       className="page-intro__visual-image"
                       loading={index === 0 ? "eager" : "lazy"}
                       priority={index === 0}
