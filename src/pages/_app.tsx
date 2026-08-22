@@ -6,12 +6,12 @@ import "swiper/swiper.scss";
 
 // types
 import type { AppProps } from "next/app";
-import { Outfit, Manrope, Lobster_Two, JetBrains_Mono } from "next/font/google";
+import { JetBrains_Mono, Lobster_Two, Manrope, Outfit } from "next/font/google";
 import Router from "next/router";
 import React, { Fragment } from "react";
 
-import * as gtag from "../utils/gtag";
 import { wrapper } from "../store";
+import * as gtag from "../utils/gtag";
 
 const isProduction = process.env.NODE_ENV === "production";
 

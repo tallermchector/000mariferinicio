@@ -9,6 +9,7 @@
     "start": "next start",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write",
     "export": "next build && next export",
+    "typecheck": "tsc --noEmit",
     "contract:emit": "prisma-cli contract emit"
   },
   "keywords": [
