@@ -7,6 +7,7 @@ import { postData } from "../utils/services";
 
 type ForgotMail = {
   email: string;
+  password: string;
 };
 
 const ForgotPassword = () => {
