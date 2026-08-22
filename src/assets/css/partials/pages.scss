@@ -1182,3 +1182,22 @@
 .subscribe .subscribe__content .subscribe__bg {
   z-index: 0;
 }
+
+/* --------------------------------------------------------------------------
+   PDP GALLERY — thumbs al costado en tablet+ / QUANTITY — sin borde interno
+   -------------------------------------------------------------------------- */
+.product-single .product-gallery {
+  @include breakpoint(phone) {
+    display: flex;
+    align-items: flex-start;
+  }
+  .product-gallery__image {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.quantity-button .quantity-button__btn {
+  border: 0;
+  padding: 0;
+}
