@@ -5,12 +5,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "format": "next lint --fix && prettier '**/*.{json,yaml}' --write",
     "export": "next build && next export",
     "typecheck": "tsc --noEmit",
-    "contract:emit": "prisma-cli contract emit"
+    "contract:emit": "prisma-cli contract emit",
+    "postinstall": "prisma generate"
   },
   "keywords": [
     "react",
