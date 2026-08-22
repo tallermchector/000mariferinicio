@@ -1,7 +1,7 @@
 import { some } from "lodash";
+import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import Image from "next/image";
 
 import type { RootState } from "@/store";
 import { toggleFavProduct } from "@/store/reducers/user";

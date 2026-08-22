@@ -1,7 +1,6 @@
+import Image from "next/image";
 import SwiperCore, { EffectFade, Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import Image from "next/image";
 
 const PageIntro = () => {
   SwiperCore.use([EffectFade, Navigation]);

@@ -1,8 +1,8 @@
 // global styles
 import "../assets/css/styles.scss";
-import "swiper/swiper.scss";
 import "rc-slider/assets/index.css";
 import "react-rater/lib/react-rater.css";
+import "swiper/swiper.scss";
 
 // types
 import type { AppProps } from "next/app";
@@ -10,8 +10,8 @@ import { Outfit, Manrope, Lobster_Two, JetBrains_Mono } from "next/font/google";
 import Router from "next/router";
 import React, { Fragment } from "react";
 
-import { wrapper } from "../store";
 import * as gtag from "../utils/gtag";
+import { wrapper } from "../store";
 
 const isProduction = process.env.NODE_ENV === "production";
 
