@@ -1,5 +1,7 @@
-# Código autogenerado por Prisma
+# Código autogenerado por Prisma / Next
 src/generated
+next-env.d.ts
+src/next-env.d.ts
 .next
 out
 node_modules
