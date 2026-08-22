@@ -42,7 +42,7 @@ const ForgotPassword = () => {
                   placeholder="email"
                   type="text"
                   name="email"
-                  ref={register({
+                  ref={register("email", {
                     required: true,
                     pattern:
                       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -68,7 +68,7 @@ const ForgotPassword = () => {
                   type="password"
                   placeholder="Password"
                   name="password"
-                  ref={register({ required: true })}
+                  ref={register("password", { required: true })}
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="message message--error">
