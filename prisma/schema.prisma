@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 1. Nivel Superior: Definición estricta de Departamentos
+enum TipoDepartamento {
+  HOMBRE
+  MUJER
+  NINO
+  VARIOS
+}
+
+model Departamento {
+  id         Int              @id @default(autoincrement())
+  nombre     TipoDepartamento @unique
+  categorias Categoria[]
+}
+
+// 2. Categorías Principales
+model Categoria {
+  id          Int     @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  url         String?
+
+  departamentoId Int
+  departamento   Departamento @relation(fields: [departamentoId], references: [id])
+
+  subcategorias Subcategoria[]
+  productos     Producto[]
+}
+
+// 3. Subcategorías
+model Subcategoria {
+  id          Int     @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  url         String?
+
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
+
+  productos Producto[]
+}
+
+// 4. Catálogo de Productos
+model Producto {
+  id             Int     @id @default(autoincrement())
+  nombre         String
+  descripcion    String?
+  precioOriginal Float?
+  precioOferta   Float?
+  precioFinal    Float
+  url            String  @unique
+  urlImagen      String?
+
+  categoriaId Int?
+  categoria   Categoria? @relation(fields: [categoriaId], references: [id])
+
+  subcategoriaId Int?
+  subcategoria   Subcategoria? @relation(fields: [subcategoriaId], references: [id])
+
+  fechaCreacion      DateTime @default(now())
+  fechaActualizacion DateTime @updatedAt
+}
